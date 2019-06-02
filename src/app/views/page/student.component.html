@@ -39,9 +39,10 @@
 
               <div *ngIf="showStudentDetails" class="card">
                 <div class="card-header">
-                  <strong>Student </strong> Details
+                  <strong>Profile </strong> Details
                 </div>
                 <div class="card-body">
+                  <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
                   <div class="form-group row">
                     <div class="col-md-6">
                       <div class="form-control-static">StudentId ID : {{StudentData?.studentId}}</div>
@@ -50,123 +51,47 @@
                       <div class="form-control-static">Name : {{StudentData?.name}}</div>
                     </div>
                   </div>
+             
+                  <br />
                   <div class="form-group row">
-                    <div class="col-md-6">
-                      <b> Requests Details </b>
-                    </div>
-                  </div>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Request ID</th>
-                        <th>Request Date </th>
-                        <th>Request Text</th>
-
-                      </tr>
-                    </thead>
-                    <tbody *ngFor="let requestdata of StudentData?.requestList">
-                      <!-- <div   *ngFor="let requestdata of StudentData?.requestList" > -->
-                      <tr>
-                        <td>{{requestdata.requestId}}</td>
-                        <td> {{requestdata.createdDate}}</td>
-                        <td>{{requestdata.requestText}}</td>
-
-                      </tr>
-                      <tr>
-                        <td colspan="4">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th>Comment ID</th>
-                                <th>Tutor ID</th>
-                                <th>Comment</th>
-                              </tr>
-                            </thead>
-                            <tbody *ngFor="let commentsdata of requestdata?.commentSet">
-                              <tr>
-                                <td>
-                                  {{commentsdata.commentId}}
-                                </td>
-                                <td>{{commentsdata.tutorId}}</td>
-                                <td>{{commentsdata.commentText}}</td>
-                              </tr>
-
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-
-                      <!-- </div> -->
-                    </tbody>
-                  </table>
-
-
-                  <!-- <div class="form-group row">
-                    <div class="col-md-6">
-                      <div class="form-control-static">StudentId ID : {{StudentData?.studentId}}</div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-control-static">Name : {{StudentData?.name}}</div>
-                    </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
                     <div class="col-md-12">
-                      <div class="form-control-static">
+                      <div class="form-control-static" style="text-align:center;">
                         <b> Requests Details </b>
                       </div>
                     </div>
                   </div>
-
+                  <br />
                   <div class="form-group row">
                     <div class="col-md-12">
                       <div *ngFor="let requestdata of StudentData?.requestList">
-                        <div class="col-md-12">
-                          <div class="col-md-3">
-                            <div class="form-control-static"> Request ID : {{requestdata.requestId}}</div>
-                          </div>
-                          <div class="col-md-3">
-                            <div class="form-control-static"> Request Date : {{requestdata.createdDate}}</div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-control-static">Request Text : {{requestdata.requestText}}</div>
-                          </div>
-                        </div>
-
 
                         <div class="col-md-12">
-                          <div class="form-control-static"> <b> Comments Details </b></div>
-
-                          <div *ngFor="let commentsdata of requestdata?.commentSet">
-                            <div class="col-md-2">
-                              <div class="form-control-static"> Comment ID : {{commentsdata.commentId}}</div>
+                          <div class="card">
+                            <div class="card-header">
+                              <strong>{{requestdata.requestText}} --</strong> <small>{{requestdata.requestId}}</small>
                             </div>
-                            <div class="col-md-4">
-                              <div class="form-control-static">Tutor ID: {{commentsdata.tutorId}}</div>
+                            <div class="card-body">
+                              <div *ngFor="let commentsdata of requestdata?.commentSet">
+                                <alert type="success">
+                                  <!-- <h4 class="alert-heading"> Comment ID : {{commentsdata.commentId}}</h4> -->
+                                  <p class="mb-0">Comments : {{commentsdata.commentText}}</p>
+                                  <p>Commented By: {{commentsdata.tutorId}}</p>
+                                </alert>
+                              </div>
                             </div>
-                            <div class="col-md-10">
-                              <div class="form-control-static">Comment : {{commentsdata.commentText}}</div>
-                            </div>
-
-
                           </div>
                         </div>
 
                       </div>
                     </div>
-                  </div> -->
-                  <!-- </form> -->
+                  </div>
+
                 </div>
-                <div class="card-footer">
-                  <!--                     
-                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-                       -->
-                </div>
+
               </div>
             </div>
           </div>
-          <!--/.row-->
+
         </tab>
 
         <tab heading="Request">
@@ -301,6 +226,73 @@
 
 
               <div *ngIf="showRequestDetails" class="card">
+
+                <!-- 
+                  <div class="detailBox">
+                      <div class="titleBox">
+                        <label>Comment Box</label>
+                          <button type="button" class="close" aria-hidden="true">&times;</button>
+                      </div>
+                      <div class="commentBox">
+                          
+                          <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      </div>
+                      <div class="actionBox">
+                          <ul class="commentList">
+                              <li>
+                                  <div class="commenterImage">
+                                    <img src="http://placekitten.com/50/50" />
+                                  </div>
+                                  <div class="commentText">
+                                      <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                  
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="commenterImage">
+                                    <img src="http://placekitten.com/45/45" />
+                                  </div>
+                                  <div class="commentText">
+                                      <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+                  
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="commenterImage">
+                                    <img src="http://placekitten.com/40/40" />
+                                  </div>
+                                  <div class="commentText">
+                                      <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                  
+                                  </div>
+                              </li>
+                          </ul>
+                          <form class="form-inline" role="form">
+                              <div class="form-group">
+                                  <input class="form-control" type="text" placeholder="Your comments" />
+                              </div>
+                              <div class="form-group">
+                                  <button class="btn btn-default">Add</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+ -->
+
+
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <strong>Alerts</strong> <small>dynamic html</small>
+                    </div>
+                    <div class="card-body">
+                      <div *ngFor="let alert of alertsHtml">
+                        <alert [type]="alert.type"><span [innerHtml]="alert.msg"></span></alert>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="card-header">
                   <strong>Request </strong> Details
                 </div>

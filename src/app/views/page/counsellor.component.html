@@ -46,9 +46,11 @@
                     <!-- <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"> -->
 
                     <div class="form-group row">
-                      <label class="col-md-2 col-form-label" style="text-align:right;" for="select1">Select Counsellor</label>
+                      <label class="col-md-2 col-form-label" style="text-align:right;" for="select1">Select
+                        Counsellor</label>
                       <div class="col-md-4">
-                        <select id="counsellorId"  name="counsellorId" ngModel #counsellorId="ngModel" class="form-control">
+                        <select id="counsellorId" name="counsellorId" ngModel #counsellorId="ngModel"
+                          class="form-control">
                           <option value="">Please select</option>
                           <option value="COU4A000">Bhagawan</option>
                           <option value="COU4T001">Zeki</option>
@@ -59,8 +61,8 @@
                     <!-- </form> -->
                   </div>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary" (click)='loadcounsellors(counsellorViewForm.value)'><i
-                        class="fa fa-dot-circle-o"></i>
+                    <button type="submit" class="btn btn-sm btn-primary"
+                      (click)='loadcounsellors(counsellorViewForm.value)'><i class="fa fa-dot-circle-o"></i>
                       Submit</button>
                   </div>
                 </form>
@@ -82,96 +84,45 @@
                     </div>
                   </div>
 
+
+
+                  <br />
                   <div class="form-group row">
                     <div class="col-md-12">
-                      <div class="form-control-static"> <b> Requests Details </b></div>
-                      <table class="table">
-                          <thead>
-                            <tr>
-                              <th>Request ID</th>
-                              <th>Request Date </th>
-                              <th>Request Text</th>
-      
-                            </tr>
-                          </thead>
-                          <tbody *ngFor="let requestdata of ConsellorData?.requestList">
-                          
-                            <tr>
-                              <td>{{requestdata.requestId}}</td>
-                              <td> {{requestdata.createdDate}}</td>
-                              <td>{{requestdata.requestText}}</td>
-      
-                            </tr>
-                            <tr>
-                              <td colspan="4">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th>Comment ID</th>
-                                      <th>Tutor ID</th>
-                                      <th>Comment</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody *ngFor="let commentsdata of requestdata?.commentSet">
-                                    <tr>
-                                      <td>
-                                        {{commentsdata.commentId}}
-                                      </td>
-                                      <td>{{commentsdata.tutorId}}</td>
-                                      <td>{{commentsdata.commentText}}</td>
-                                    </tr>
-      
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-      
-                            <!-- </div> -->
-                          </tbody>
-                        </table>
-                      <!-- <br />
+                      <div class="form-control-static" style="text-align:center;">
+                        <b> Requests Details </b>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="form-group row">
+                    <div class="col-md-12">
                       <div *ngFor="let requestdata of ConsellorData?.requestList">
-                        <div class="col-md-2">
-                          <div class="form-control-static"> Request ID : {{requestdata.requestId}}</div>
-                        </div>
-                        <br />
-                        <div class="col-md-10">
-                          <div class="form-control-static">Request Text : {{requestdata.requestText}}</div>
-                        </div>
-                        <br />
-                        <div class="col-md-4">
-                          <div class="form-control-static"> Request Date : {{requestdata.createdDate}}</div>
-                        </div>
-                        <br />
+
                         <div class="col-md-12">
-                          <div class="form-control-static"> <b> Comments Details </b></div>
-                          <br />
-                          <div *ngFor="let commentsdata of requestdata?.commentSet">
-                            <div class="col-md-2">
-                              <div class="form-control-static"> Comment ID : {{commentsdata.commentId}}</div>
+                          <div class="card">
+                            <div class="card-header">
+                              <strong>{{requestdata.requestText}} --</strong> <small>{{requestdata.requestId}}</small>
                             </div>
-                            <br />
-                            <div class="col-md-10">
-                              <div class="form-control-static">Comment : {{commentsdata.commentText}}</div>
-                            </div>
-                            <br />
-                            <div class="col-md-4">
-                              <div class="form-control-static">Tutor ID: {{commentsdata.tutorId}}</div>
+                            <div class="card-body">
+                              <div *ngFor="let commentsdata of requestdata?.commentSet">
+                                <alert type="success">
+                                  <!-- <h4 class="alert-heading"> Comment ID : {{commentsdata.commentId}}</h4> -->
+                                  <p class="mb-0">Comments : {{commentsdata.commentText}}</p>
+                                  <p>Commented By: {{commentsdata.tutorId}}</p>
+                                </alert>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <br />
-                      </div> -->
+
+                      </div>
                     </div>
                   </div>
+
                   <!-- </form> -->
                 </div>
-                <div class="card-footer">
-                  <!--                     
-                      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                      <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-                     -->
-                </div>
+
               </div>
             </div>
           </div>

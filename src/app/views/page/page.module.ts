@@ -38,12 +38,17 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 // Components Routing
 import { PageRoutingModule } from './page-routing.module';
 
+
+// Alert Component
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     PageRoutingModule,
     BsDropdownModule.forRoot(),
+    AlertModule.forRoot(),
     TabsModule,
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
