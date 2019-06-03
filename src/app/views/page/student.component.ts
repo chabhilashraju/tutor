@@ -38,6 +38,7 @@ export class StudentComponent implements OnInit {
       // this.showRequestDetails = true;
       //this.StudentData = data;
       console.log(data);
+      window.alert("Success");
     })
 
   }
@@ -61,7 +62,7 @@ export class StudentComponent implements OnInit {
     
     return this.restApiStudentService.createStudentRequest(this.requestJson).subscribe((data: {}) => {
        console.log(" Successfully Created " + data);
-       alert(" Successfully Request Created ");
+       window.alert("Success");
     })
 
   }

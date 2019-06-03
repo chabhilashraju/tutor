@@ -54,6 +54,7 @@ export class TutorComponent {
 
     return this.restApiTutorService.createCommentRequest(this.requestJson).subscribe((data: {}) => {
       console.log(data);
+      window.alert("Success");
     })
 
   }

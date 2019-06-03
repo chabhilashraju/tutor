@@ -38,6 +38,7 @@ export class CounsellorComponent implements OnInit {
       // this.showRequestDetails = true;
       //this.counsellorData = data;
       console.log(data);
+      window.alert("Success");
     })
 
   }
