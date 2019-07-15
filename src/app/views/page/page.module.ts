@@ -2,6 +2,8 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { StudentComponent } from './student.component';
 
@@ -42,6 +44,15 @@ import { PageRoutingModule } from './page-routing.module';
 // Alert Component
 import { AlertModule } from 'ngx-bootstrap/alert';
 
+import { StudentinfoComponent } from './studentinfo.component';
+import { DataTablesModule } from 'angular-datatables';
+import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -55,12 +66,22 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    DataTablesModule,
+    BsDatepickerModule.forRoot(),
+    DatepickerModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    ChartsModule,
+    BsDropdownModule,
+    ButtonsModule.forRoot(),
+    TimepickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   declarations: [
     StudentComponent,
     TutorComponent,
-    CounsellorComponent
-   ]
+    CounsellorComponent,
+    StudentinfoComponent
+  ]
 })
 export class PageModule { }

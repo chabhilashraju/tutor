@@ -1,0 +1,68 @@
+[
+    {
+      "requestId": "HRXXXXXXX183",
+      "subject": "Course Planning",
+      "requestBody": "Help Needed",
+      "type": "Math",
+      "status": "Submitted",
+      "priority": "High",
+      "availabilityTime": "Anytime",
+      "createdDate": "18/06/2019",
+      "commentSet": [
+        {
+          "commentId": "302",
+          "commentText": "Accepted",
+          "tutorId": "TUT1001"
+        },
+        {
+          "commentId": "301",
+          "commentText": "Yes Accepted the request",
+          "tutorId": "TUT1001"
+        }
+      ]
+    },
+    {
+        "requestId": "HRXXXXXX000194",
+        "subject": "Course Planning",
+        "requestBody": "Help Needed",
+        "type": "Math",
+        "status": "Submiitted",
+        "priority": "High",
+        "availabilityTime": "6 PM - 9 PM",
+        "createdDate": "18/06/2019",
+        "commentSet": [
+          {
+            "commentId": "302",
+            "commentText": "Accepted",
+            "tutorId": "TUT1001"
+          },
+          {
+            "commentId": "301",
+            "commentText": "Yes Accepted the request",
+            "tutorId": "TUT1001"
+          }
+        ]
+      },
+      {
+        "requestId": "HRXXXXXX000201",
+        "subject": "Course Planning",
+        "requestBody": "Help Needed",
+        "type": "Chemistry",
+        "status": "Submiitted",
+        "priority": "High",
+        "availabilityTime": "3 PM - 9 PM",
+        "createdDate": "18/06/2019",
+        "commentSet": [
+          {
+            "commentId": "302",
+            "commentText": "Accepted",
+            "tutorId": "TUT1001"
+          },
+          {
+            "commentId": "301",
+            "commentText": "Yes Accepted the request",
+            "tutorId": "TUT1001"
+          }
+        ]
+      }
+  ]

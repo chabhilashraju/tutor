@@ -1,0 +1,74 @@
+[
+  {
+    "requestId": "HRXXXXXX000166",
+    "subject": "Course Planning",
+    "requestBody": "Help Needed",
+    "type": "Ap Calc B/C",
+    "status": "Scheduled",
+    "confirmedStatus": "Scheduled",
+    "priority": "High",
+    "availabilityTime": "Any Time",
+    "createdDate": "10/06/2019",
+    "proposedTime": "2:00 PM - 4:00 PM",
+    "commentSet": [
+      {
+        "commentId": "302",
+        "commentText": "Accepted",
+        "tutorId": "TUT1001"
+      },
+      {
+        "commentId": "301",
+        "commentText": "Yes Accepted the request",
+        "tutorId": "TUT1001"
+      }
+    ]
+  },
+  {
+    "requestId": "HRXXXXXX000194",
+    "subject": "Course Planning",
+    "requestBody": "Help Needed",
+    "type": "Ap Cpmp Sci",
+    "status": "In progress",
+    "confirmedStatus": "In progress",
+    "priority": "High",
+    "availabilityTime": "6 PM - 9 PM",
+    "createdDate": "18/06/2019",
+    "proposedTime": "6 PM - 9 PM",
+    "commentSet": [
+      {
+        "commentId": "302",
+        "commentText": "Accepted",
+        "tutorId": "TUT1001"
+      },
+      {
+        "commentId": "301",
+        "commentText": "Yes Accepted the request",
+        "tutorId": "TUT1001"
+      }
+    ]
+  },
+  {
+    "requestId": "HRXXXXXX000201",
+    "subject": "Course Planning",
+    "requestBody": "Help Needed",
+    "type": "Ap Cpmp Sci",
+    "status": "In progress",
+    "confirmedStatus": "In progress",
+    "priority": "High",
+    "availabilityTime": "3 PM - 4 PM",
+    "createdDate": "18/06/2019",
+    "proposedTime": "2:00 PM - 4:00 PM",
+    "commentSet": [
+      {
+        "commentId": "302",
+        "commentText": "Accepted",
+        "tutorId": "TUT1001"
+      },
+      {
+        "commentId": "301",
+        "commentText": "Yes Accepted the request",
+        "tutorId": "TUT1001"
+      }
+    ]
+  }
+]

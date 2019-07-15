@@ -30,21 +30,38 @@ export interface NavData {
 }
 
 export const navItems: NavData[] = [
+
   {
     name: 'Student',
-    url: '/page/student',
+    url: '/page/studentdetails',
     icon: 'icon-drop'
   },
+  // {
+  //   name: 'Login',
+  //   url: '/login',
+  //   icon: 'icon-star'
+  // },
+  // {
+  //   name: 'Register',
+  //   url: '/register',
+  //   icon: 'icon-star'
+  // },
+  // {
+  //   name: 'Student',
+  //   url: '/page/student',
+  //   icon: 'icon-drop'
+  // },
   {
     name: 'Tutor',
     url: '/page/tutor',
     icon: 'icon-pencil'
   },
-  {
-    name: 'Counsellor',
-    url: '/page/counsellor',
-    icon: 'icon-cursor'
-  },
+  // {
+  //   name: 'Counsellor',
+  //   url: '/page/counsellor',
+  //   icon: 'icon-cursor'
+  // },
+
 
   /*{
     name: 'Dashboard',

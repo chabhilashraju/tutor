@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StudentComponent } from './student.component';
 import { TutorComponent } from './tutor.component';
 import { CounsellorComponent } from './counsellor.component';
+import {StudentinfoComponent} from './studentinfo.component';
 
 
 const routes: Routes = [
@@ -15,11 +16,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'student'
+        redirectTo: 'studentdetails'
       },
       {
         path: 'student',
         component: StudentComponent,
+        data: {
+          title: 'Student'
+        }
+      },
+      {
+        path: 'studentdetails',
+        component: StudentinfoComponent,
         data: {
           title: 'Student'
         }

@@ -2,6 +2,10 @@ import { Component, OnDestroy, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { navItems } from '../../_nav';
 
+export interface User {
+  id: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +16,9 @@ export class DefaultLayoutComponent implements OnDestroy {
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement;
+  currentUser: User;
   constructor(@Inject(DOCUMENT) _document?: any) {
-
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
     });

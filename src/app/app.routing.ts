@@ -8,12 +8,12 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { AuthGuard } from './guards';
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'page',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: '404',
@@ -56,7 +56,7 @@ export const routes: Routes = [
       },
       {
         path: 'page',
-        loadChildren: './views/page/page.module#PageModule'
+        loadChildren: './views/page/page.module#PageModule', canActivate: [AuthGuard]
       },
       {
         path: 'buttons',
@@ -86,7 +86,6 @@ export const routes: Routes = [
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
       },
-      
       {
         path: 'pages',
         loadChildren: './views/pages/pages.module#PagesModule'
@@ -97,7 +96,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

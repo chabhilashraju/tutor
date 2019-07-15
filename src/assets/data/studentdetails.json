@@ -1,0 +1,68 @@
+[
+    {
+      "requestId": "HRXXXXXXX183",
+      "subject": "Course Planning",
+      "requestBody": "Help Needed",
+      "type": "AP Bio",
+      "status": "Closed",
+      "priority": "High",
+      "availabilityTime": "9:00 - 10:00",
+      "createdDate": "06/15/2019",
+      "commentSet": [
+        {
+          "commentId": "302",
+          "commentText": "Accepted",
+          "tutorId": "TUT1001"
+        },
+        {
+          "commentId": "301",
+          "commentText": "Yes Accepted the request",
+          "tutorId": "TUT1001"
+        }
+      ]
+    },
+    {
+        "requestId": "HRXXXXXXX178",
+        "subject": "Course Planning",
+        "requestBody": "Help Needed",
+        "type": "Algebra",
+        "status": "Closed",
+        "priority": "High",
+        "availabilityTime": "9:00 - 10:00",
+        "createdDate": "06/17/2019",
+        "commentSet": [
+          {
+            "commentId": "302",
+            "commentText": "Accepted",
+            "tutorId": "TUT1001"
+          },
+          {
+            "commentId": "301",
+            "commentText": "Yes Accepted the request",
+            "tutorId": "TUT1001"
+          }
+        ]
+      },
+      {
+        "requestId": "HRXXXXXXX092",
+        "subject": "Course Planning",
+        "requestBody": "Help Needed",
+        "type": "SAT/ACT",
+        "status": "In progress",
+        "priority": "High",
+        "availabilityTime": "9:00 - 10:00",
+        "createdDate": "06/05/2019",
+        "commentSet": [
+          {
+            "commentId": "302",
+            "commentText": "Accepted",
+            "tutorId": "TUT1001"
+          },
+          {
+            "commentId": "301",
+            "commentText": "Yes Accepted the request",
+            "tutorId": "TUT1001"
+          }
+        ]
+      }
+  ]

@@ -9,26 +9,23 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
 
-import { TutorServiceService } from "../../shared/tutor-service.service";
-
 
 import { StudentInfoService } from '../../shared/student-info.service';
 
 @Component({
-  templateUrl: 'tutor.component.html'
+  templateUrl: 'studentinfo.component.html'
 })
-
-export class TutorComponent implements OnDestroy, OnInit {
+export class StudentinfoComponent implements OnDestroy, OnInit {
+  mytime: Date = new Date();
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<Student> = new Subject();
   persons: any = [];
-  tutorData : any = [];
-  // tslint:disable-next-line: no-inferrable-types
+// tslint:disable-next-line: no-inferrable-types
   showCreateStudentRequest: boolean = false;
   myDateValue: Date;
 
   constructor(
-    private studentInfo: StudentInfoService, private http: HttpClient, private tutorInfo: TutorServiceService
+    private studentInfo: StudentInfoService, private http: HttpClient
   ) { }
   ngOnInit() {
 
@@ -42,18 +39,7 @@ export class TutorComponent implements OnDestroy, OnInit {
     this.dtOptions = {
       pageLength: 5
     };
-
-    this.http.get('../assets/data/studentdetails2.json')
-      .pipe(map(this.extractData))
-      .subscribe(tutorData => {
-        this.tutorData = tutorData;
-        // Calling the DT trigger to manually render the table
-
-        this.dtTrigger.next();
-      });
-
-
-      this.http.get('../assets/data/studentdetails1.json')
+    this.http.get('../assets/data/studentdetails.json')
       .pipe(map(this.extractData))
       .subscribe(persons => {
         this.persons = persons;
@@ -61,7 +47,6 @@ export class TutorComponent implements OnDestroy, OnInit {
 
         this.dtTrigger.next();
       });
-
 
   }
 
@@ -84,7 +69,7 @@ export class TutorComponent implements OnDestroy, OnInit {
     return body || {};
   }
 
-
+  
   radioModel: string = 'Month';
 
   // lineChart1
@@ -319,7 +304,7 @@ export class TutorComponent implements OnDestroy, OnInit {
       mode: 'index',
       position: 'nearest',
       callbacks: {
-        labelColor: function (tooltipItem, chart) {
+        labelColor: function(tooltipItem, chart) {
           return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor };
         }
       }
@@ -332,7 +317,7 @@ export class TutorComponent implements OnDestroy, OnInit {
           drawOnChartArea: false,
         },
         ticks: {
-          callback: function (value: any) {
+          callback: function(value: any) {
             return value.charAt(0);
           }
         }
@@ -455,5 +440,5 @@ export class TutorComponent implements OnDestroy, OnInit {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-
+ 
 }
