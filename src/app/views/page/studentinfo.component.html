@@ -1,122 +1,60 @@
 <div class="animated fadeIn">
-    
-        <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                  <div class="card text-white bg-info">
-                    <div class="card-body pb-0">
-                      <!-- <button type="button" class="btn btn-transparent p-0 float-right">
-                        <i class="icon-location-pin"></i>
-                      </button> -->
-                      <div class="text-value">10</div>
-                      <div>New Requests</div>
-                    </div>
-                    <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="lineChart2Data"
-                      [labels]="lineChart2Labels"
-                      [options]="lineChart2Options"
-                      [colors]="lineChart2Colours"
-                      [legend]="lineChart2Legend"
-                      [chartType]="lineChart2Type"></canvas>
-                    </div>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6 col-lg-3">
-                  <div class="card text-white bg-primary">
-                    <div class="card-body pb-0">
-                      <!-- <div class="btn-group float-right" dropdown>
-                        <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-                          <i class="icon-settings"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div> -->
-                      <div class="text-value">06</div>
-                      <div>In Progress</div>
-                    </div>
-                    <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                      <canvas baseChart class="chart"
-                              [datasets]="lineChart1Data"
-                              [labels]="lineChart1Labels"
-                              [options]="lineChart1Options"
-                              [colors]="lineChart1Colours"
-                              [legend]="lineChart1Legend"
-                              [chartType]="lineChart1Type"></canvas>
-                    </div>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6 col-lg-3">
-                  <div class="card text-white bg-warning">
-                    <div class="card-body pb-0">
-                      <!-- <div class="btn-group float-right" dropdown>
-                        <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-                          <i class="icon-settings"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div> -->
-                      <div class="text-value">15</div>
-                      <div>Closed</div>
-                    </div>
-                    <div class="chart-wrapper mt-3" style="height:70px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="lineChart3Data"
-                      [labels]="lineChart3Labels"
-                      [options]="lineChart3Options"
-                      [colors]="lineChart3Colours"
-                      [legend]="lineChart3Legend"
-                      [chartType]="lineChart3Type"></canvas>
-                    </div>
-                  </div>
-                </div><!--/.col-->
-                 <div class="col-sm-6 col-lg-3">
-                  <div class="card text-white bg-danger">
-                    <div class="card-body pb-0">
-                      <!-- <div class="btn-group float-right" dropdown>
-                        <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-                          <i class="icon-settings"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div> -->
-                      <div class="text-value">3</div>
-                      <div>Tutor's online</div>
-                    </div>
-                    <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                      <canvas baseChart class="chart"
-                      [datasets]="barChart1Data"
-                      [labels]="barChart1Labels"
-                      [options]="barChart1Options"
-                      [colors]="barChart1Colours"
-                      [legend]="barChart1Legend"
-                      [chartType]="barChart1Type"></canvas>
-                    </div>
-                  </div>
-                </div> 
-              </div><!--/.row-->
+    <div class="row">
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-info" style="min-height: 100px;">
+                <div class="card-body pb-0">
+                    <!-- <button type="button" class="btn btn-transparent p-0 float-right"><i class="icon-location-pin"></i></button> -->
+                    <div class="text-value">{{openRequestCount}}</div>
+                    <div>Open Requests</div>
+                </div>
+
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-primary" style="min-height: 100px;">
+                <div class="card-body pb-0">
+                    <div class="text-value">{{inProgressRequestCount}}</div>
+                    <div>In Progress</div>
+                </div>
+
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-warning" style="min-height: 100px;">
+                <div class="card-body pb-0">
+                    <div class="text-value">{{scheduleRequestCount}}</div>
+                    <div>Scheduled </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-lg-3">
+            <div class="card text-white bg-danger" style="min-height: 100px;">
+                <div class="card-body pb-0">
+                    <div class="text-value">{{totalRequestCount}}</div>
+                    <div>Total Requests</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
     <div class="row">
         <div class="col-md-12 mb-4">
             <!-- Nav tabs -->
             <tabset>
-
                 <tab heading="View">
                     <div class="row">
                         <div class="col-md-12">
                             <div [hidden]="showCreateStudentRequest" class="card">
                                 <div class="card-header">
-                                    <strong>Request</strong> Details <span style="float: right;"
-                                        class="btn btn-sm btn-primary" (click)='openStudentDetails()'>
-                                        Create New Request </span>
+                                    <strong>Request</strong> Details
+                                    <span style="float: right;" class="btn btn-sm btn-primary"
+                                        (click)='openStudentDetails()'>
+                                        Create New Request</span>
                                 </div>
                                 <form #studentViewForm="ngForm" class="form-horizontal">
                                     <div class="card-body">
@@ -128,379 +66,293 @@
                                                     <th>Created On</th>
                                                     <th>Help Aera</th>
                                                     <th>Status</th>
+                                                    <th style="display: none;">Reuest Body</th>
+                                                    <th style="display: none;">Request Type</th>
+                                                    <th style="display: none;">Priority</th>
+                                                    <th style="display: none;">Available Date</th>
+                                                    <th style="display: none;">Start Time</th>
+                                                    <th style="display: none;">End Time </th>
+                                                    <!-- <th style="display: none;">Subject Name</th>
+                                                    <th style="display: none;">Comment Text </th>
+                                                    <th style="display: none;">Created Date</th> -->
+
+
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let person of persons">
-                                                    <td>{{ person.requestId }}</td>
+                                                    <td (click)='lgModal.show()'>{{ person.requestId }}</td>
                                                     <td>{{ person.createdDate }}</td>
-                                                    <td>{{ person.type }}</td>
+                                                    <td>{{ person.subjectMaster.subjectName }}</td>
                                                     <td>{{ person.status }}</td>
+                                                    <td style="display: none;">{{ person.requestBody }}</td>
+                                                    <td style="display: none;">{{ person.requestType }}</td>
+                                                    <td style="display: none;">{{ person.priority }}</td>
+                                                    <td style="display: none;">{{ person.availableDate }}</td>
+                                                    <td style="display: none;">{{ person.startTime }}</td>
+                                                    <td style="display: none;">{{ person.endTime }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- <div class="card-footer">
-                                        <button type="submit" class="btn btn-sm btn-primary"
-                                            (click)='loadStudentDetails(studentId.value)'><i
-                                                class="fa fa-dot-circle-o"></i>
-                                            Submit</button>
-                                    </div> -->
                                 </form>
+
+
+
+
+                                <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="dialog-sizes-name1">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Request No:
+                                                    {{requestIdVal}}</h4>
+                                                <button type="button" class="close pull-right" (click)="lgModal.hide()"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="card-body">
+                                                    <form action="" method="post" class="form-horizontal">
+                                                        <div class="row">
+                                                            <label class="col-md-3 col-form-label"
+                                                                for="text-input">Subject/Guidance (Choosen Area)</label>
+                                                            <div class="col-md-4">
+                                                                {{helpAera}}
+                                                            </div>
+                                                            <span class="col-md-3">
+                                                                <span class="btn btn-sm btn-primary">
+                                                                    View FAQs</span>
+                                                            </span>
+                                                        </div>
+                                                        <!--/.row-->
+                                                        <br />
+                                                        <div class="row">
+                                                            <span class="col-md-2 col-form-label"
+                                                                for="text-input">Student
+                                                                Id</span>
+                                                            <span class="col-md-4 col-form-label">
+                                                                {{currentUser.studentId}}
+                                                            </span>
+                                                            <span class="col-md-2 col-form-label" for="text-input">
+                                                                Name</span>
+                                                            <Span class="col-md-4  col-form-label">
+                                                                {{currentUser.firstName}}&nbsp;{{currentUser.lastName}}
+                                                            </Span>
+                                                        </div>
+                                                        <br />
+                                                        <div class="row">
+                                                            <span class="col-md-2 col-form-label" for="text-input">
+                                                                Mobile
+                                                                No</span>
+                                                            <span class="col-md-4 col-form-label">
+                                                                {{currentUser.phone}}
+                                                            </span>
+                                                            <span class="col-md-2 col-form-label" for="text-input">
+                                                                Grade</span>
+                                                            <span class="col-md-4 col-form-label">
+                                                                {{currentUser.gradeMaster.gradeName}}
+                                                            </span>
+                                                        </div>
+                                                        <br />
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="name">What student is looking for
+                                                                    </label>
+                                                                    <span class="form-control col-md-10 col-form-label">
+                                                                        {{requestBodyVal}}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--/.row-->
+                                                        <br /><br />
+                                                        <div class="row">
+                                                            <div class="form-group col-sm-12">
+                                                                <span
+                                                                    class="btn btn-secondary btn-lg btn-block">Student's
+                                                                    Available date : {{availableDateVal}} - Time :
+                                                                    {{startTimeVal}} - {{endTimeVal}}
+                                                                </span>
+                                                            </div>
+                                                            <!-- <span class="form-group col-sm-6">
+                                                                <span
+                                                                    class="btn btn-secondary btn-lg btn-block">Student's
+                                                                    available Time : 
+                                                                </span>
+                                                            </span> -->
+
+                                                        </div>
+                                                        <!--/.row-->
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- 
-                            <br />
-                            <br /> -->
+
                             <div [hidden]="!showCreateStudentRequest" class="card">
                                 <!-- <div class="col-md-12"> -->
-
                                 <!-- <div class="card"> -->
                                 <div class="card-header">
-                                    <strong>New Request</strong> Form <span style="float: right;"
-                                        class="btn btn-sm btn-primary" (click)='openRequestDetails()'>
+                                    <strong>New Request</strong> Form
+                                    <span style="float: right;" class="btn btn-sm btn-primary"
+                                        (click)='openRequestDetails()'>
                                         Show Requests</span>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="post" class="form-horizontal">
+                                    <form #studentCreateRequest="ngForm"
+                                        (ngSubmit)="onNewRequestCreate(studentCreateRequest.value)">
                                         <div class="row">
-                                            <div class="form-group col-sm-4">
+                                            <div class="form-group col-sm-6">
                                                 <label for="ccmonth">Subject Help</label>
-                                                <!-- <select class="form-control" id="ccmonth">
-                                                                    <option> AP Comp Sci</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10</option>
-                                                                    <option>11</option>
-                                                                    <option>12</option>
-                                                                </select> -->
                                                 <div class="col-md-9 col-form-label">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio1" value="option1" checked>
+                                                    <div class="form-check" *ngFor="let subject of gradeSubjects">
+                                                        <input class="form-check-input" type="radio" ngModel
+                                                            name="subjectsVal" id={{subject.subjectMaster.subjectId}}
+                                                            value={{subject.subjectMaster.subjectId}} checked>
                                                         <label class="form-check-label" for="radio1">
-                                                                Algebra 1
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio2" value="option2">
-                                                        <label class="form-check-label" for="radio2">
-                                                                Literature & Writing
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                                Biology
+                                                            {{subject.subjectMaster.subjectName}}
                                                         </label>
                                                     </div>
                                                     <!-- <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            AP Biology
+                                                            id="radio2" value="option2">
+                                                        <label class="form-check-label" for="radio2">
+                                                            Literature & Writing
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="radios"
                                                             id="radio3" value="option3">
                                                         <label class="form-check-label" for="radio3">
-                                                            Chem Hons
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            AP Stats
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            Spanish 3
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            World Lang
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            Geometry
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            Amlinch
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
-                                                            French
+                                                            Biology
                                                         </label>
                                                     </div> -->
                                                 </div>
                                             </div>
-                                            <div class="form-group col-sm-3">
-                                                <br/>
-                                                <br/>
+                                            <div class="form-group col-sm-4">
+                                                <br />
+                                                <br />
                                                 Select Start Date
-                                                <input type="text" class="form-control" [minDate]="minDate"
-                                                    [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker
-                                                    [(bsValue)]="myDateValue">
-                                                    <!-- <br/>
-                                                    Select End Date
-                                                    <input type="text" class="form-control" [minDate]="minDate"
-                                                        [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker
-                                                        [(bsValue)]="myDateValue"> -->
+                                                <input type="text" class="form-control" name="datePickerVal" ngModel
+                                                    [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                                                    bsDatepicker [(bsValue)]="myDateValue">
 
                                             </div>
-                                            <div class="form-group col-sm-2">
+                                            <div class="form-group col-sm-6">
                                                 Select Start Time
-                                            <timepicker [(ngModel)]="mytime"></timepicker>
-
-                                           
+                                                <timepicker name="startTime" [(ngModel)]="startTime"></timepicker>
                                             </div>
-
-                                            <div class="form-group col-sm-2">
-                                              
-                                             
-                                                        Select End Time
-                                                    <timepicker [(ngModel)]="mytime"></timepicker>
-                                                   
-                                                </div> 
-                                            <!-- <div class="form-group col-sm-4">
-                                                    <input type="text"
-                                                           placeholder="Datepicker"
-                                                           class="form-control"
-                                                           bsDatepicker>
-                                                  </div> -->
-                                                  <!-- <div class="form-group col-sm-4">
-                                                    <input type="text"
-                                                           placeholder="Daterangepicker"
-                                                           class="form-control"
-                                                           bsDaterangepicker>
-                                                  </div> -->
-
-                                            
-
-
+                                            <div class="form-group col-sm-6">
+                                                Select End Time
+                                                <timepicker name="endTime" [(ngModel)]="endTime"></timepicker>
+                                            </div>
                                         </div>
                                         <!--/.row-->
-                                        <!-- <div class="form-group row">
-                                                    <label class="col-md-2 col-form-label"
-                                                        for="text-input">Subject/Guidance (Choosen Area)</label>
-                                                    <div class="col-md-4">
-                                                        <input type="text" id="text-input" name="text-input"
-                                                            class="form-control" placeholder="Text">
-
-                                                    </div>
-                                                    <span class="col-md-2">
-                                                        <button type="submit" class="btn btn-sm btn-primary">
-                                                            View FAQs</button>
-                                                    </span>
-                                                </div> -->
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label for="name">Describe what you were looking for</label>
-                                                    <!-- <label style="float: right;" class="col-md-4">
-                                                                <input type="text" id="text-input" name="text-input"
-                                                                    class="form-control" placeholder="XXX-XXX-XXXX">
-
-                                                            </label> -->
-                                                    <textarea id="textarea-input" name="textarea-input" rows="4"
+                                                    <textarea id="contentText" ngModel name="contentText" rows="4"
                                                         class="form-control" placeholder="Content.."></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--/.row-->
-
                                         <div class="row">
                                             <div class="form-group col-sm-4">
                                                 <label for="ccmonth">Type Of Request</label>
-                                                <!-- <select class="form-control" id="ccmonth">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                            <option>10</option>
-                                                            <option>11</option>
-                                                            <option>12</option>
-                                                        </select> -->
                                                 <div class="col-md-9 col-form-label">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio1" value="option1" checked>
-                                                        <label class="form-check-label" for="radio1">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="typeOfRequestsOption" id="homeworkHelp" value="homeworkHelp"
+                                                            checked>
+                                                        <label class="form-check-label" for="homeworkHelp">
                                                             Homework Help
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio2" value="option2">
-                                                        <label class="form-check-label" for="radio2">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="typeOfRequestsOption" id="examPreparation" value="examPreparation">
+                                                        <label class="form-check-label" for="examPreparation">
                                                             Exam Preparation
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="typeOfRequestsOption" id="projectHelp" value="projectHelp">
+                                                        <label class="form-check-label" for="projectHelp">
                                                             Project Help
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="typeOfRequestsOption" id="enrichment" value="enrichment">
+                                                        <label class="form-check-label" for="enrichment">
                                                             Enrichment
                                                         </label>
                                                     </div>
-                                               
-                                           
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <label for="ccyear">Urgency</label>
-                                                <!-- <select class="form-control" id="ccyear">
-                                                            <option>2014</option>
-                                                            <option>2015</option>
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                            <option>2019</option>
-                                                            <option>2020</option>
-                                                            <option>2021</option>
-                                                            <option>2022</option>
-                                                            <option>2023</option>
-                                                            <option>2024</option>
-                                                            <option>2025</option>
-                                                        </select> -->
                                                 <div class="col-md-9 col-form-label">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio1" value="option1" checked>
-                                                        <label class="form-check-label" for="radio1">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="urgencyOption" id="high" value="high" checked>
+                                                        <label class="form-check-label" for="high">
                                                             High
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio2" value="option2">
-                                                        <label class="form-check-label" for="radio2">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="urgencyOption" id="medium" value="medium">
+                                                        <label class="form-check-label" for="medium">
                                                             Medium
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="urgencyOption" id="low" value="low">
+                                                        <label class="form-check-label" for="low">
                                                             Low
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="radios"
-                                                            id="radio3" value="option3">
-                                                        <label class="form-check-label" for="radio3">
+                                                        <input class="form-check-input" ngModel type="radio"
+                                                            name="urgencyOption" id="trivial" value="trivial">
+                                                        <label class="form-check-label" for="trivial">
                                                             Trivial
                                                         </label>
                                                     </div>
                                                 </div>
-
-
                                             </div>
-                                            <!-- <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label for="cvv">Availability</label>
-                                                            <div class="col-md-9 col-form-label">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="radios" id="radio1" value="option1"
-                                                                        checked>
-                                                                    <label class="form-check-label" for="radio1">
-                                                                        6 PM - 8 PM
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="radios" id="radio2" value="option2">
-                                                                    <label class="form-check-label" for="radio2">
-                                                                        8 PM - 10 PM
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="radios" id="radio3" value="option3">
-                                                                    <label class="form-check-label" for="radio3">
-                                                                        10 PM - 12 AM
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="radios" id="radio3" value="option3">
-                                                                    <label class="form-check-label" for="radio3">
-                                                                        6 AM - 10 AM
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="radios" id="radio3" value="option3">
-                                                                    <label class="form-check-label" for="radio3">
-                                                                        Anytime
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
                                         </div>
                                         <!--/.row-->
-
-
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                Submit
+                                            </button>
+                                            <!-- <button type="reset" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-ban"></i>
+                                                Reset
+                                            </button> -->
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-dot-circle-o"></i>
-                                        Submit</button>
-                                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>
-                                        Reset</button>
-                                </div>
+
                                 <!-- </div> -->
                                 <!-- </div> -->
                             </div>
                         </div>
                     </div>
-
                 </tab>
-
-
-
             </tabset>
         </div>
     </div>
-
 </div>

@@ -5,12 +5,8 @@ import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
-import { StudentComponent } from './student.component';
-
 // Forms Component
 import { TutorComponent } from './tutor.component';
-
-import { CounsellorComponent } from './counsellor.component';
 
 // Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -78,9 +74,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot()
   ],
   declarations: [
-    StudentComponent,
     TutorComponent,
-    CounsellorComponent,
     StudentinfoComponent
   ]
 })

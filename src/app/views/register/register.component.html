@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col-md-9 mx-auto">
           <div class="card mx-4">
-            <div class="card-body p-4">
-              <h1 style="text-align: center;">Register</h1>
-              <p style="text-align: center;" class="text-muted">Create your account</p>
-              <button type="button" class="btn btn-brand btn-lg btn-facebook mr-1" (click)="showStudentRegForm()"
+            <div class="card-body p-4" style="height: 450px;">
+              <h1 style="text-align: center !important;" class="btn-facebook">Student Registration</h1>
+              <p style="text-align: center; font-size: 24px;" class="text-muted">Create your account</p>
+              <!--<button type="button" class="btn btn-brand btn-lg btn-facebook mr-1" (click)="showStudentRegForm()"
                 style="margin-bottom: 4px">
                 <i class="fa fa-user"></i>
                 <span>&nbsp;&nbsp;Student Authentication &nbsp;&nbsp;</span>
@@ -21,220 +21,51 @@
                 style="margin-bottom: 4px; float: right;">
                 <i class="fa fa-user-secret"></i>
                 <span>&nbsp;&nbsp;&nbsp;Tutor &nbsp;&nbsp;&nbsp;</span>
-              </button>
+              </button> -->
               <br />
               <br />
               <div *ngIf="showStudentForm">
-                <form [formGroup]="loginForm">
+                <form #studentAuthentication="ngForm" (ngSubmit)="onRequestCreate(studentAuthentication.value)">
                   <div class="row">
-                    <div class="form-group col-sm-12">
-                      <label for="ccmonth">School District</label>
-                      <select class="form-control" formControlName="username" id="ccmonth">
-                        <option>ABCD</option>
-                        <option>EFGH</option>
-                      </select>
+                    <span class="form-group col-sm-6">
+                      <label for="name">Enter Student ID Number</label>
+                      <input type="text" placeholder="Enter Student Id" class="form-control" id="studentId" ngModel
+                        name="studentId" #studentId="ngModel">
+                    </span>
 
-                      <!-- <select [(ngModel)]="schoolDistrict">
-                        <option *ngFor="let schoolDistrict of schoolDistricts" [value]="schoolDistrict"> {{ schoolDistrict }} </option>
-                      </select> -->
-                    </div>
-                    <div class="form-group col-sm-12">
-                      <label for="ccyear">School</label>
-                      <select class="form-control" formControlName="password" id="ccyear">
-                        <option>ABCD</option>
-                        <option>EFGH</option>
-                      </select>
-                      <!-- 
-                      <select [(ngModel)]="schoolName">
-                        <option *ngFor="let schoolName of schoolMasterList" [value]="schoolName"> {{ schoolName }} </option>
-                      </select> -->
-                    </div>
-                    <div class="form-group col-sm-12">
-                      <div class="form-group">
-                        <label for="name">Student ID Number</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Enter ID Number">
-                      </div>
-                    </div>
+                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
+                          <label for="name">User Name</label>
+                          <input type="text" class="form-control" id="studentUserName" ngModel
+                          name="studentUserName" #studentUserName="ngModel">
+                    </span>
+                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
+                          <label for="name">Password</label>
+                          <input type="password" class="form-control"  id="studentPassword" ngModel
+                          name="studentPassword" #studentPassword="ngModel">
+                    </span>
+
+                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
+                          <label for="name">Confirm Password</label>
+                          <input type="password" class="form-control"  id="studentConfirmPassword" ngModel
+                          name="studentConfirmPassword" #studentConfirmPassword="ngModel">
+                    </span>
+
+                    <span class="col-sm-4"  *ngIf="!showStudentSignInForm">
+                        <label>&nbsp;</label>
+                      <button type="submit" class="btn btn-block btn-success"> Validate </button>
+                    </span>
+               
+                    <span class="col-sm-4" style="text-align: center;" *ngIf="showStudentSignInForm">
+                        <label>&nbsp;</label>
+                      <button type="submit" class="btn btn-block btn-success"> Register </button>
+                    </span>
+
                   </div>
                   <!--/.row-->
-                  <div class="col-sm-6" style="margin: auto;">
-                    <button type="button" class="btn btn-block btn-success">Submit</button>
-                  </div>
                 </form>
               </div>
-              <div *ngIf="showStudentSignInForm">
-                <form [formGroup]="loginForm">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">User Name</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="User Name">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Areas of subject-Related Help</label>
-                        <!-- <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="User Name"> -->
-                        <select class="form-control" formControlName="username" id="ccmonth">
-                          <option>English</option>
-                          <option>Maths</option>
-                        </select>
-                        <br />
-                        Sub Class
 
-                        <input formControlName="selected" [typeahead]="states" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Password</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Enter Password">
-                      </div>
-                    </div>
-                    <div class="form-group  col-sm-6">
-                      <label for="ccmonth">Other Areas Of Help</label>
-                      <div class="col-md-9 col-form-label">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox1">
-                          <label class="form-check-label" for="checkbox1">
-                            SAT/ACT
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox2">
-                          <label class="form-check-label" for="checkbox2">
-                            Course Planning
-                          </label>
-                        </div>
-                        <div class="form-check checkbox">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox3">
-                          <label class="form-check-label" for="checkbox3">
-                            Extra Curricular Enrichment
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Confirm Password</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Confirm Password">
-                      </div>
-                    </div>
-                  </div>
-                  <!--/.row-->
-                  <br />
-                  <br />
-                  <div class="col-sm-6" style="margin: auto;">
-                    <button type="button" class="btn btn-block btn-success">Submit</button>
-                  </div>
-                </form>
-              </div>
-              <div *ngIf="showTutorForm">
-                <form [formGroup]="loginForm">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">User Name</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="User Name">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Areas of subject-Related Help</label>
-                        <!-- <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="User Name"> -->
-                        <!-- <pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre> -->
-                        <label for="ccmonth">Tutor Type</label>
-                        <select class="form-control" formControlName="username" id="ccmonth">
-                          <option>English</option>
-                          <option>Maths</option>
-                        </select>
-                        <br />
-                        Sub Class
-
-                        <input formControlName="selected" [typeahead]="states" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group col-sm-6">
-                      <label for="ccmonth">Tutor Type</label>
-                      <select class="form-control" formControlName="username" id="ccmonth">
-                        <option>Student</option>
-                        <option>Parent/Guardian</option>
-                      </select>
-                    </div>
-                    <div class="form-group  col-sm-6">
-                      <label for="ccmonth">Other Areas Of Help</label>
-                      <div class="col-md-9 col-form-label">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox1">
-                          <label class="form-check-label" for="checkbox1">
-                            SAT/ACT
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox2">
-                          <label class="form-check-label" for="checkbox2">
-                            Course Planning
-                          </label>
-                        </div>
-                        <div class="form-check checkbox">
-                          <input class="form-check-input" type="checkbox" value="option1" id="checkbox3">
-                          <label class="form-check-label" for="checkbox3">
-                            Extra Curricular Enrichment
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Email</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Enter Email">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Biography</label>
-                        <textarea id="textarea-input" name="textarea-input" rows="3" class="form-control"
-                          placeholder="Content.."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Student ID</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Student ID">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Password</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Enter Password">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label for="name">Confirm Password</label>
-                        <input formControlName="stdIdnumber" type="text" class="form-control" id="name"
-                          placeholder="Confirm Password">
-                      </div>
-                    </div>
-                  </div>
-                  <!--/.row-->
-                  <br />
-                  <br />
-                  <div class="col-sm-6" style="margin: auto;">
-                    <button type="button" class="btn btn-block btn-success">Submit</button>
-                  </div>
-                </form>
-              </div>
+                     
             </div>
           </div>
         </div>

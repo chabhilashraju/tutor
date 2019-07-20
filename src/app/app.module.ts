@@ -7,10 +7,9 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import { StudentServiceService } from './shared/student-service.service';
-import { CounsellorServiceService } from './shared/counsellor-service.service';
-import { TutorServiceService } from './shared/tutor-service.service';
-import { StudentInfoService } from './shared/student-info.service';
+import { StudentRegistrationService } from './shared/student-registration.service';
+import { TutorRegistrationService } from './shared/tutor-registration.service';
+
 import { AuthenticationService } from './shared/authentication.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -26,6 +25,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { TutorRegisterComponent } from './views/register/tutorregister.component';
 import { AuthGuard } from './guards';
 
 const APP_CONTAINERS = [
@@ -57,6 +57,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -85,11 +86,12 @@ import { FormsModule } from '@angular/forms';
     P500Component,
     LoginComponent,
     RegisterComponent,
+    TutorRegisterComponent
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, StudentServiceService, CounsellorServiceService, TutorServiceService, StudentInfoService, AuthGuard, AuthenticationService],
+  }, StudentRegistrationService, AuthGuard, AuthenticationService, TutorRegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

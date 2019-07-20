@@ -42,6 +42,10 @@ import 'core-js/es7/object';
 /** IE10 and IE11 requires the following for the Reflect API. */
 import 'core-js/es6/reflect';
 
+/** Evergreen browsers require these. **/
+
+import 'core-js/es7/reflect';
+
 // for IE10
 import 'mutationobserver-shim';
 

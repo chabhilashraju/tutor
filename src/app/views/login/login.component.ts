@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
+
+    this.router.navigate(['/page']);
     // this.submitted = true;
 
     // stop here if form is invalid
