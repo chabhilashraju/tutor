@@ -200,7 +200,7 @@ export class TutorComponent implements OnDestroy, OnInit {
       'commentText': ' Accepted',
       'createdDate': '',
       'request': {
-        'requestId': this.requestBodyVal
+        'requestId': this.requestIdVal
       },
       'tutorMaster': {
         'tutorId': this.currentUser.tutorId
