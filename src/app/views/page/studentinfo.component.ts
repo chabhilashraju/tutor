@@ -1,4 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import { AfterViewInit,ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 import { Student } from '../../shared/student';
@@ -9,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { StudentRegistrationService } from '../../shared/student-registration.service';
 // import { Router } from '@angular/router';
 
+
 export interface User {
   id: number;
   name: string;
@@ -16,12 +21,19 @@ export interface User {
   gradeMaster: any;
   studentId: any;
   tutorId: any;
+  showStudent: any;
 }
 
 @Component({
   templateUrl: 'studentinfo.component.html'
 })
-export class StudentinfoComponent implements OnDestroy, OnInit {
+export class StudentinfoComponent implements AfterViewInit, OnDestroy, OnInit {
+  @ViewChild(DataTableDirective, {static: false} as any)
+  dtElement: DataTableDirective;
+
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<Student> = new Subject();
+
   currentUser: User;
 
   requestIdVal: any;
@@ -49,8 +61,6 @@ export class StudentinfoComponent implements OnDestroy, OnInit {
 
   startTime: Date = new Date();
   endTime: Date = new Date();
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<Student> = new Subject();
   persons: any = [];
   // tslint:disable-next-line: no-inferrable-types
   showCreateStudentRequest: boolean = false;
@@ -67,12 +77,16 @@ export class StudentinfoComponent implements OnDestroy, OnInit {
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
+
+
     if (!this.currentUser.studentId) {
+      this.currentUser.showStudent = false;
       this.router.navigate(['/page/tutor']);
+    }else{
+      this.currentUser.showStudent = true;
     }
 
   }
-
 
   someClickHandler(info: any): void {
     this.requestIdVal = info.requestId;
@@ -155,7 +169,9 @@ export class StudentinfoComponent implements OnDestroy, OnInit {
       // this.router.navigate(['/login']);
      // this.dtTrigger.unsubscribe();
       this.openRequestDetails();
-     // this.loadStudentRequestsCall();
+     
+      this.loadStudentRequestsCall();
+      //this.rerender();
       
     });
 
@@ -220,8 +236,8 @@ export class StudentinfoComponent implements OnDestroy, OnInit {
 
       this.persons = data.requestList;
       // Calling the DT trigger to manually render the table
-     
-      this.dtTrigger.next();
+      this.rerender();
+      // this.dtTrigger.next();
     });
   }
 
@@ -229,9 +245,24 @@ export class StudentinfoComponent implements OnDestroy, OnInit {
     this.showCreateStudentRequest = false;
   }
 
+
+
+  ngAfterViewInit(): void {
+    this.dtTrigger.next();
+  }
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
+  }
+
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next();
+    });
   }
 
   private extractData(res: Response) {

@@ -44,7 +44,11 @@ export class RegisterComponent implements OnInit {
     console.log('FORM Data' + form.studentId);
     if (!this.showStudentSignInForm) {
       this.studentServiceApi.getStudent(form.studentId).subscribe(data => {
-        this.showStudentSignInForm = true;
+        if (data.message === null) {
+          alert('Enter valid student ID');
+        } else {
+          this.showStudentSignInForm = true;
+        }
         console.log(data);
       });
     } else {
@@ -58,9 +62,16 @@ export class RegisterComponent implements OnInit {
 
       this.studentServiceApi.studentRegistration(this.requestJson).subscribe(data => {
         // this.showStudentSignInForm = true;
+
+        if (data.status === "AlreadyPresent") {
+          alert('User already present for student id - Please login with user credentials');
+          this.router.navigate(['/login']);
+        } else {
+          alert('Registration Success  - Please login with user credentials');
+          this.router.navigate(['/login']);
+        }
         console.log(data);
-        alert('Registration Success');
-        this.router.navigate(['/login']);
+
       });
     }
 

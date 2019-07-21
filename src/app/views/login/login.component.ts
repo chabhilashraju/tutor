@@ -50,12 +50,17 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log('USER data : ' + JSON.stringify(data) );
+          if (!data) {
+            alert('Please enter valid credentials');
+          }
+          console.log('USER data : ' + JSON.stringify(data));
           this.router.navigate(['/page']);
         },
         error => {
-         // this.alertService.error(error);
+          // this.alertService.error(error);
           //           this.loading = false;
+
+          alert('Please enter valid credentials');
         });
   }
 

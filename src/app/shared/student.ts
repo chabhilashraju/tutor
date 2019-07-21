@@ -8,4 +8,6 @@ export class Student {
   tutorRequests: any;
   openRequestCount: any;
   openRequestList: any;
+  message: any;
+  status: string;
 }

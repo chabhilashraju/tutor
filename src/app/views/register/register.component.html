@@ -7,21 +7,6 @@
             <div class="card-body p-4" style="height: 450px;">
               <h1 style="text-align: center !important;" class="btn-facebook">Student Registration</h1>
               <p style="text-align: center; font-size: 24px;" class="text-muted">Create your account</p>
-              <!--<button type="button" class="btn btn-brand btn-lg btn-facebook mr-1" (click)="showStudentRegForm()"
-                style="margin-bottom: 4px">
-                <i class="fa fa-user"></i>
-                <span>&nbsp;&nbsp;Student Authentication &nbsp;&nbsp;</span>
-              </button>
-              <button type="button" class="btn btn-brand btn-lg btn-facebook mr-1" (click)="showStudentRegSignInForm()"
-                style="margin-bottom: 4px">
-                <i class="fa fa-user"></i>
-                <span>&nbsp;&nbsp;Student Registration &nbsp;&nbsp;</span>
-              </button>
-              <button type="button" class="btn btn-brand btn-lg btn-stack-overflow mr-1" (click)="showTutorRegForm()"
-                style="margin-bottom: 4px; float: right;">
-                <i class="fa fa-user-secret"></i>
-                <span>&nbsp;&nbsp;&nbsp;Tutor &nbsp;&nbsp;&nbsp;</span>
-              </button> -->
               <br />
               <br />
               <div *ngIf="showStudentForm">
@@ -32,40 +17,36 @@
                       <input type="text" placeholder="Enter Student Id" class="form-control" id="studentId" ngModel
                         name="studentId" #studentId="ngModel">
                     </span>
-
-                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
-                          <label for="name">User Name</label>
-                          <input type="text" class="form-control" id="studentUserName" ngModel
-                          name="studentUserName" #studentUserName="ngModel">
+                    <span class="form-group col-sm-6" *ngIf="showStudentSignInForm">
+                      <label for="name">User Name</label>
+                      <input type="text" class="form-control" id="studentUserName" ngModel name="studentUserName"
+                        #studentUserName="ngModel">
                     </span>
-                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
-                          <label for="name">Password</label>
-                          <input type="password" class="form-control"  id="studentPassword" ngModel
-                          name="studentPassword" #studentPassword="ngModel">
-                    </span>
-
-                    <span class="form-group col-sm-6"  *ngIf="showStudentSignInForm">
-                          <label for="name">Confirm Password</label>
-                          <input type="password" class="form-control"  id="studentConfirmPassword" ngModel
-                          name="studentConfirmPassword" #studentConfirmPassword="ngModel">
+                    <span class="form-group col-sm-6" *ngIf="showStudentSignInForm">
+                      <label for="name">Password</label>
+                      <input type="password" class="form-control" id="studentPassword" ngModel name="studentPassword"
+                        #studentPassword="ngModel">
                     </span>
 
-                    <span class="col-sm-4"  *ngIf="!showStudentSignInForm">
-                        <label>&nbsp;</label>
+                    <span class="form-group col-sm-6" *ngIf="showStudentSignInForm">
+                      <label for="name">Confirm Password</label>
+                      <input type="password" class="form-control" id="studentConfirmPassword" ngModel
+                        name="studentConfirmPassword" #studentConfirmPassword="ngModel">
+                    </span>
+
+                    <span class="col-sm-4" *ngIf="!showStudentSignInForm">
+                      <label>&nbsp;</label>
                       <button type="submit" class="btn btn-block btn-success"> Validate </button>
                     </span>
-               
+
                     <span class="col-sm-4" style="text-align: center;" *ngIf="showStudentSignInForm">
-                        <label>&nbsp;</label>
+                      <label>&nbsp;</label>
                       <button type="submit" class="btn btn-block btn-success"> Register </button>
                     </span>
 
                   </div>
-                  <!--/.row-->
                 </form>
               </div>
-
-                     
             </div>
           </div>
         </div>

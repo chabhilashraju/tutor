@@ -48,7 +48,12 @@ export class TutorRegisterComponent implements OnInit {
     console.log('FORM Data' + JSON.stringify(form));
     if (!this.showtutorSignInForm) {
       this.tutorRegistrationService.getStudent(form.studentId).subscribe(data => {
-        this.showtutorSignInForm = true;
+       
+        if (data.message === null) {
+          alert('Enter valid student ID');
+        } else {
+          this.showtutorSignInForm = true;
+        }
         console.log(data);
       });
     } else {

@@ -1,4 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { QueryList, ViewChildren } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+
 import { Response } from '@angular/http';
 import { Student } from '../../shared/student';
 import { Subject } from 'rxjs';
@@ -22,6 +27,18 @@ export interface User {
 })
 
 export class TutorComponent implements OnDestroy, OnInit {
+  @ViewChildren(DataTableDirective)
+  dtElements: QueryList<DataTableDirective>;
+  dtOptions: DataTables.Settings[] = [];
+  dtTrigger: Subject<any>[] = [];
+
+
+  // @ViewChild(DataTableDirective, { static: false } as any)
+  // dtElement: DataTableDirective;
+
+  // dtOptions: DataTables.Settings = {};
+  // dtTrigger: Subject<Student> = new Subject();
+
 
   currentUser: User;
 
@@ -59,25 +76,20 @@ export class TutorComponent implements OnDestroy, OnInit {
   createdDate: any;
   helpAera: any;
   requestJson: any;
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<Student> = new Subject();
-
-  // dtOptions1: DataTables.Settings = {};
-  // dtTrigger1: Subject<Student> = new Subject();
 
   persons: any = [];
   tutorData: any = [];
+  tutorAssignedData: any = [];
   // tslint:disable-next-line: no-inferrable-types
   showCreateStudentRequest: boolean = false;
   myDateValue: Date;
 
   constructor(
     private http: HttpClient, private tutorServiceApi: TutorRegistrationService
-    //  private studentInfo: StudentInfoService, private http: HttpClient, private tutorInfo: TutorServiceService
   ) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log( "currentUser" + this.currentUser);
+    console.log("currentUser" + this.currentUser);
   }
 
   someClickHandler(info: any): void {
@@ -114,75 +126,11 @@ export class TutorComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.myDateValue = new Date();
 
+    this.dtTrigger[0] = new Subject<any>();
+    this.dtTrigger[1] = new Subject<any>();
+    this.loadTutortOpenedRequestsCall();
+    this.loadTutortAssignedRequestsCall();
 
-    this.loadTutortRequestsCall();
-
-
-
-
-    // this.dtOptions1 = {
-    //   columns: [{
-    //     title: 'Request ID',
-    //     data: 'requestId'
-    //   }, {
-    //     title: 'Created On',
-    //     data: 'createdDate'
-    //   }, {
-    //     title: 'Help Aera',
-    //     data: 'subjectMaster.subjectName'
-    //   }, {
-    //     title: 'Status',
-    //     data: 'status'
-    //   }, {
-    //     title: 'Request Body',
-    //     data: 'requestBody'
-    //   }, {
-    //     title: 'Request Type',
-    //     data: 'requestType'
-    //   }, {
-    //     title: 'Priority',
-    //     data: 'priority'
-    //   }, {
-    //     title: 'Available Date',
-    //     data: 'availableDate'
-    //   }, {
-    //     title: 'Start Time',
-    //     data: 'startTime'
-    //   }, {
-    //     title: 'End Time',
-    //     data: 'endTime'
-    //   }
-    //   ],
-    //   pageLength: 5,
-    //   rowCallback: (row: Node, data: any[] | Object, index: number) => {
-    //     const self = this;
-    //     // Unbind first in order to avoid any duplicate handler
-    //     // (see https://github.com/l-lin/angular-datatables/issues/87)
-    //     $('td', row).unbind('click');
-    //     $('td', row).bind('click', () => {
-    //       self.someClickHandler(data);
-    //     });
-    //     return row;
-    //   }
-    // };
-
-    // this.http.get('../assets/data/studentdetails2.json')
-    //   .pipe(map(this.extractData))
-    //   .subscribe(tutorData => {
-    //     this.tutorData = this.currentUser.openRequestSet;
-    //     // Calling the DT trigger to manually render the table
-    //     this.dtTrigger.next();
-    //   });
-
-
-    // this.http.get('../assets/data/studentdetails1.json')
-    //   .pipe(map(this.extractData))
-    //   .subscribe(persons => {
-    //     this.persons = this.currentUser.tutorRequestSet;
-    //     // Calling the DT trigger to manually render the table
-
-    //     this.dtTrigger.next();
-    //   });
   }
 
   openStudentDetails() {
@@ -207,25 +155,88 @@ export class TutorComponent implements OnDestroy, OnInit {
       }
     };
 
-    
-
-
     console.log('request data' + JSON.stringify(this.requestJson));
     this.tutorServiceApi.tutorCommentRequests(this.requestJson).subscribe(data => {
       // this.showtutorSignInForm = true;
       console.log(data);
       alert('Request Accepted');
-     // this.router.navigate(['/login']);
-    });
 
+      this.loadTutortOpenedRequestsCall();
+      this.loadTutortAssignedRequestsCall();
+
+      // this.router.navigate(['/login']);
+    });
 
   }
 
+  loadTutortOpenedRequestsCall() {
+    this.dtOptions[0] = {
+      columns: [{
+        title: 'Request ID',
+        data: 'requestId'
+      }, {
+        title: 'Created On',
+        data: 'createdDate'
+      }, {
+        title: 'Help Aera',
+        data: 'subjectMaster.subjectName'
+      }, {
+        title: 'Status',
+        data: 'status'
+      }, {
+        title: 'Request Body',
+        data: 'requestBody'
+      }, {
+        title: 'Request Type',
+        data: 'requestType'
+      }, {
+        title: 'Priority',
+        data: 'priority'
+      }, {
+        title: 'Available Date',
+        data: 'availableDate'
+      }, {
+        title: 'Start Time',
+        data: 'startTime'
+      }, {
+        title: 'End Time',
+        data: 'endTime'
+      }
+      ],
+      pageLength: 5,
+      rowCallback: (row: Node, data: any[] | Object, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        $('td', row).unbind('click');
+        $('td', row).bind('click', () => {
+          self.someClickHandler(data);
+        });
+        return row;
+      }
+    };
 
 
-  loadTutortRequestsCall() {
 
-    this.dtOptions = {
+    this.tutorServiceApi.getTutorRequests(this.currentUser.tutorId).subscribe(data => {
+      // this.showStudentSignInForm = true;
+      console.log(data);
+      this.totalRequestCount = data.totalRequestCount;
+      this.scheduleRequestCount = data.scheduleCount;
+      this.inProgressRequestCount = data.inProgressCount;
+      this.openRequestCount = data.openRequestCount;
+      this.tutorData = data.openRequestList;
+      // Calling the DT trigger to manually render the table
+      this.openedRender();
+      // this.dtTrigger.next();
+    });
+  }
+
+  
+  loadTutortAssignedRequestsCall() {
+ 
+
+    this.dtOptions[1] = {
       columns: [{
         title: 'Request ID',
         data: 'requestId'
@@ -273,24 +284,76 @@ export class TutorComponent implements OnDestroy, OnInit {
 
     this.tutorServiceApi.getTutorRequests(this.currentUser.tutorId).subscribe(data => {
       // this.showStudentSignInForm = true;
-
       console.log(data);
       this.totalRequestCount = data.totalRequestCount;
       this.scheduleRequestCount = data.scheduleCount;
       this.inProgressRequestCount = data.inProgressCount;
       this.openRequestCount = data.openRequestCount;
-
-      this.tutorData = data.openRequestList;
+      this.tutorAssignedData = data.tutorRequests;
       // Calling the DT trigger to manually render the table
-
-      this.dtTrigger.next();
+       this.assignedRender();
+      // this.dtTrigger.next();
     });
   }
 
 
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.dtTrigger[0].next();    
+    });
+    setTimeout(() => {
+      this.dtTrigger[1].next();    
+    });
+  }
+
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
+   // Do not forget to unsubscribe the event
+    // this.dtTrigger[0].unsubscribe();
+    // this.dtTrigger[1].unsubscribe();
+    setTimeout(() => {
+      this.dtTrigger[0].unsubscribe();    
+    });
+    setTimeout(() => {
+      this.dtTrigger[1].unsubscribe();    
+    });
+    
+  }
+
+  openedRender(): void {
+
+    this.dtElements.forEach((dtElement: DataTableDirective,index: number) => {
+      dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Do your stuff
+        if(index === 0)
+        {
+        dtInstance.destroy();
+        setTimeout(() => {
+          this.dtTrigger[0].next();    
+        });
+      }
+     
+      });
+    });
+  }
+
+  assignedRender(): void {
+ 
+
+    this.dtElements.forEach((dtElement: DataTableDirective,index: number) => {
+      dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        // Do your stuff
+        if(index === 1)
+        {
+        dtInstance.destroy();
+        setTimeout(() => {
+          this.dtTrigger[1].next();    
+        });
+      }
+        
+      });
+    });
+
   }
 
   private extractData(res: Response) {

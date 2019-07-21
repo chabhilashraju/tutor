@@ -1,221 +1,201 @@
 <div class="animated fadeIn">
-    <div class="row">
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white bg-info" style="min-height: 100px;">
-                <div class="card-body pb-0">
-                    <!-- <button type="button" class="btn btn-transparent p-0 float-right"><i class="icon-location-pin"></i></button> -->
-                    <div class="text-value">{{openRequestCount}}</div>
-                    <div>Open Requests</div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-info" style="min-height: 100px;">
+                    <div class="card-body pb-0">
+                        <!-- <button type="button" class="btn btn-transparent p-0 float-right"><i class="icon-location-pin"></i></button> -->
+                        <div class="text-value">{{openRequestCount}}</div>
+                        <div>Open Requests</div>
+                    </div>
+    
                 </div>
-
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-primary" style="min-height: 100px;">
+                    <div class="card-body pb-0">
+                        <div class="text-value">5</div>
+                        <div>In Progress</div>
+                    </div>
+    
+                </div>
+            </div>
+          
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-warning" style="min-height: 100px;">
+                    <div class="card-body pb-0">
+                        <div class="text-value">5</div>
+                        <div>Scheduled </div>
+                    </div>
+    
+                </div>
+            </div>
+          
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-danger" style="min-height: 100px;">
+                    <div class="card-body pb-0">
+                        <div class="text-value">5</div>
+                        <div>Total Requests</div>
+                    </div>
+    
+                </div>
             </div>
         </div>
-        <!--/.col-->
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white bg-primary" style="min-height: 100px;">
-                <div class="card-body pb-0">
-                    <div class="text-value">5</div>
-                    <div>In Progress</div>
-                </div>
-
-            </div>
-        </div>
-      
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white bg-warning" style="min-height: 100px;">
-                <div class="card-body pb-0">
-                    <div class="text-value">5</div>
-                    <div>Scheduled </div>
-                </div>
-
-            </div>
-        </div>
-      
-        <div class="col-sm-6 col-lg-3">
-            <div class="card text-white bg-danger" style="min-height: 100px;">
-                <div class="card-body pb-0">
-                    <div class="text-value">5</div>
-                    <div>Total Requests</div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--/.row-->
-    <div class="row">
-        <div class="col-md-12 mb-4">
-            <!-- Nav tabs -->
-            <tabset>
-                <tab heading="Open Requests">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div [hidden]="showCreateStudentRequest" class="card">
-                                <div class="card-header">
-                                    <strong>Request</strong> Details
-                                    <!-- <span style="float: right;"
-                                    class="btn btn-sm btn-primary" (click)='openStudentDetails()'>
-                                    Create New Request </span> -->
-                                </div>
-                                <form #studentViewForm="ngForm" class="form-horizontal">
-                                    <div class="card-body">
-                                        <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
-                                            class="row-border hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Request #</th>
-                                                    <th>Created On</th>
-                                                    <th>Help Aera</th>
-                                                    <th>Status</th>
-                                                    <th>Availability</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let tutor of tutorData">
-                                                    <td>{{ tutor.requestId }}</td>
-                                                    <td>{{ tutor.createdDate }}</td>
-                                                    <td>{{ tutor.type }}</td>
-                                                    <td>{{ tutor.status }}</td>
-                                                    <td>{{ tutor.availabilityTime }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table> -->
-                                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
-                                            class="row-border hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Request #</th>
-                                                    <th>Created On</th>
-                                                    <th>Help Aera</th>
-                                                    <th>Status</th>
-                                                    <th style="display: none;">Priority</th>
-                                                    <th style="display: none;">Available Date</th>
-                                                    <th style="display: none;">Reuest Body</th>
-                                                    <th style="display: none;">Request Type</th>
-                                                    <th style="display: none;">Start Time</th>
-                                                    <th style="display: none;">End Time </th>
-                                                    <!-- <th style="display: none;">Subject Name</th>
-                                                <th style="display: none;">Comment Text </th>
-                                                <th style="display: none;">Created Date</th> -->
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let data of tutorData">
-                                                    <td (click)='lgModal.show()'>{{ data.requestId }}</td>
-                                                    <td>{{ data.createdDate }}</td>
-                                                    <td>{{ data.subjectMaster.subjectName }}</td>
-                                                    <td>{{ data.status }}</td>
-                                                    <td style="display: none;">{{ data.priority }}</td>
-                                                    <td style="display: none;">{{ data.availableDate }}</td>
-                                                    <td style="display: none;">{{ data.requestBody }}</td>
-                                                    <td style="display: none;">{{ data.requestType }}</td>
-                                                    <td style="display: none;">{{ data.startTime }}</td>
-                                                    <td style="display: none;">{{ data.endTime }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
+        <!--/.row-->
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <!-- Nav tabs -->
+                <tabset>
+                    <tab heading="Open Requests">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div [hidden]="showCreateStudentRequest" class="card">
+                                    <div class="card-header">
+                                        <strong>Request</strong> Details
+                                        <!-- <span style="float: right;"
+                                        class="btn btn-sm btn-primary" (click)='openStudentDetails()'>
+                                        Create New Request </span> -->
                                     </div>
-                                </form>
-
-                                <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                                    aria-labelledby="dialog-sizes-name1">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Request No:
-                                                    {{requestIdVal}}</h4>
-                                                <button type="button" class="close pull-right" (click)="lgModal.hide()"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="card-body">
-                                                    <form #tutorOpenRequestsForm="ngForm" class="form-horizontal">
-                                                        <div class="row">
-                                                            <label class="col-md-3 col-form-label"
-                                                                for="text-input">Subject/Guidance (Choosen Area)</label>
-                                                            <div class="col-md-4">
-                                                                {{helpAera}}
+                                    <form #studentViewForm="ngForm" class="form-horizontal">
+                                        <div class="card-body">
+                                            <table datatable [dtOptions]="dtOptions[0]" [dtTrigger]="dtTrigger[0]"
+                                                class="row-border hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Request #</th>
+                                                        <th>Created On</th>
+                                                        <th>Help Aera</th>
+                                                        <th>Status</th>
+                                                        <th style="display: none;">Priority</th>
+                                                        <th style="display: none;">Available Date</th>
+                                                        <th style="display: none;">Reuest Body</th>
+                                                        <th style="display: none;">Request Type</th>
+                                                        <th style="display: none;">Start Time</th>
+                                                        <th style="display: none;">End Time </th>
+                                                        <!-- <th style="display: none;">Subject Name</th>
+                                                    <th style="display: none;">Comment Text </th>
+                                                    <th style="display: none;">Created Date</th> -->
+    
+    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let data of tutorData">
+                                                        <td (click)='lgModal.show()'>{{ data.requestId }}</td>
+                                                        <td>{{ data.createdDate }}</td>
+                                                        <td>{{ data.subjectMaster.subjectName }}</td>
+                                                        <td>{{ data.status }}</td>
+                                                        <td style="display: none;">{{ data.priority }}</td>
+                                                        <td style="display: none;">{{ data.availableDate }}</td>
+                                                        <td style="display: none;">{{ data.requestBody }}</td>
+                                                        <td style="display: none;">{{ data.requestType }}</td>
+                                                        <td style="display: none;">{{ data.startTime }}</td>
+                                                        <td style="display: none;">{{ data.endTime }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+    
+                                        </div>
+                                    </form>
+    
+                                    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-labelledby="dialog-sizes-name1">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 id="dialog-sizes-name1" class="modal-title pull-left">Request No:
+                                                        {{requestIdVal}}</h4>
+                                                    <button type="button" class="close pull-right" (click)="lgModal.hide()"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card-body">
+                                                        <form #tutorOpenRequestsForm="ngForm" class="form-horizontal">
+                                                            <div class="row">
+                                                                <label class="col-md-3 col-form-label"
+                                                                    for="text-input">Subject/Guidance (Choosen Area)</label>
+                                                                <div class="col-md-4">
+                                                                    {{helpAera}}
+                                                                </div>
+                                                                <span class="col-md-3">
+                                                                    <span class="btn btn-sm btn-primary">
+                                                                        View FAQs</span>
+                                                                </span>
                                                             </div>
-                                                            <span class="col-md-3">
-                                                                <span class="btn btn-sm btn-primary">
-                                                                    View FAQs</span>
-                                                            </span>
-                                                        </div>
-                                                        <!--/.row-->
-                                                        <br />
-                                                        <div class="row">
-                                                            <span class="col-md-2 col-form-label"
-                                                                for="text-input">Tutor
-                                                                Id</span>
-                                                            <span class="col-md-4 col-form-label">
-                                                                {{currentUser.tutorId}}
-                                                            </span>
-                                                            <span class="col-md-2 col-form-label" for="text-input">
-                                                                Name</span>
-                                                            <Span class="col-md-4  col-form-label">
-                                                                {{currentUser.firstName}}&nbsp;{{currentUser.lastName}}
-                                                            </Span>
-                                                        </div>
-                                                        <br />
-                                                        <div class="row">
-                                                            <span class="col-md-2 col-form-label" for="text-input">
-                                                                Mobile
-                                                                No</span>
-                                                            <span class="col-md-4 col-form-label">
-                                                                {{currentUser.phone}}
-                                                            </span>
-                                                            <span class="col-md-2 col-form-label" for="text-input">
-                                                                Grade</span>
-                                                            <!-- <span class="col-md-4 col-form-label">
-                                                                {{currentUser.gradeMaster.gradeName}}
-                                                            </span> -->
-                                                        </div>
-                                                        <br />
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group">
-                                                                    <label for="name">What student is looking for
-                                                                    </label>
-                                                                    <span class="form-control col-md-10 col-form-label">
-                                                                        {{requestBodyVal}}
-                                                                    </span>
+                                                            <!--/.row-->
+                                                            <br />
+                                                            <div class="row">
+                                                                <span class="col-md-2 col-form-label"
+                                                                    for="text-input">Tutor
+                                                                    Id</span>
+                                                                <span class="col-md-4 col-form-label">
+                                                                    {{currentUser.tutorId}}
+                                                                </span>
+                                                                <span class="col-md-2 col-form-label" for="text-input">
+                                                                    Name</span>
+                                                                <Span class="col-md-4  col-form-label">
+                                                                    {{currentUser.firstName}}&nbsp;{{currentUser.lastName}}
+                                                                </Span>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <span class="col-md-2 col-form-label" for="text-input">
+                                                                    Mobile
+                                                                    No</span>
+                                                                <span class="col-md-4 col-form-label">
+                                                                    {{currentUser.phone}}
+                                                                </span>
+                                                                <span class="col-md-2 col-form-label" for="text-input">
+                                                                    Grade</span>
+                                                                <!-- <span class="col-md-4 col-form-label">
+                                                                    {{currentUser.gradeMaster.gradeName}}
+                                                                </span> -->
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="name">What student is looking for
+                                                                        </label>
+                                                                        <span class="form-control col-md-10 col-form-label">
+                                                                            {{requestBodyVal}}
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <!--/.row-->
-                                                        <br /><br />
-                                                        <div class="row">
-                                                            <div class="form-group col-sm-12">
-                                                                <span
-                                                                    class="btn btn-secondary btn-lg btn-block">Student's
-                                                                    Available date : {{availableDateVal}} - Time :
-                                                                    {{startTimeVal}} - {{endTimeVal}}
-                                                                </span>
+                                                            <!--/.row-->
+                                                            <br /><br />
+                                                            <div class="row">
+                                                                <div class="form-group col-sm-12">
+                                                                    <span
+                                                                        class="btn btn-secondary btn-lg btn-block">Student's
+                                                                        Available date : {{availableDateVal}} - Time :
+                                                                        {{startTimeVal}} - {{endTimeVal}}
+                                                                    </span>
+                                                                </div>
+    
+    
+                                                                <button type="button"
+                                                                    class="btn btn-brand btn-lg btn-stack-overflow mr-1"
+                                                                    (click)="tutorAcceptedRequest();lgModal.hide()"
+                                                                    style="margin-bottom: 4px; float: right;">
+                                                                    <i class="fa fa-user-secret"></i>
+                                                                    <span>Accept</span>
+                                                                </button>
+    
+                                                                <!-- <span class="form-group col-sm-6">
+                                                                    <span
+                                                                        class="btn btn-secondary btn-lg btn-block">Student's
+                                                                        available Time : 
+                                                                    </span>
+                                                                </span> -->
+    
                                                             </div>
-
-
-                                                            <button type="button"
-                                                                class="btn btn-brand btn-lg btn-stack-overflow mr-1"
-                                                                (click)="tutorAcceptedRequest();lgModal.hide()"
-                                                                style="margin-bottom: 4px; float: right;">
-                                                                <i class="fa fa-user-secret"></i>
-                                                                <span>Accept</span>
-                                                            </button>
-
-                                                            <!-- <span class="form-group col-sm-6">
-                                                                <span
-                                                                    class="btn btn-secondary btn-lg btn-block">Student's
-                                                                    available Time : 
-                                                                </span>
-                                                            </span> -->
-
-                                                        </div>
-                                                        <!--/.row-->
-                                                    </form>
+                                                            <!--/.row-->
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -223,11 +203,168 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </tab>
-              
+                    </tab>
 
-            </tabset>
+                    <tab heading="Assigned Requests">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div [hidden]="showCreateStudentRequest" class="card">
+                                        <div class="card-header">
+                                            <strong>Request</strong> Details
+                                            <!-- <span style="float: right;"
+                                            class="btn btn-sm btn-primary" (click)='openStudentDetails()'>
+                                            Create New Request </span> -->
+                                        </div>
+                                        <form #studentViewForm="ngForm" class="form-horizontal">
+                                            <div class="card-body">
+                                                <table datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger[1]"
+                                                    class="row-border hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Request #</th>
+                                                            <th>Created On</th>
+                                                            <th>Help Aera</th>
+                                                            <th>Status</th>
+                                                            <th style="display: none;">Priority</th>
+                                                            <th style="display: none;">Available Date</th>
+                                                            <th style="display: none;">Reuest Body</th>
+                                                            <th style="display: none;">Request Type</th>
+                                                            <th style="display: none;">Start Time</th>
+                                                            <th style="display: none;">End Time </th>
+                                                            <!-- <th style="display: none;">Subject Name</th>
+                                                        <th style="display: none;">Comment Text </th>
+                                                        <th style="display: none;">Created Date</th> -->
+        
+        
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let data of tutorAssignedData">
+                                                            <td (click)='lgModal1.show()'>{{ data.requestId }}</td>
+                                                            <td>{{ data.createdDate }}</td>
+                                                            <td>{{ data.subjectMaster.subjectName }}</td>
+                                                            <td>{{ data.status }}</td>
+                                                            <td style="display: none;">{{ data.priority }}</td>
+                                                            <td style="display: none;">{{ data.availableDate }}</td>
+                                                            <td style="display: none;">{{ data.requestBody }}</td>
+                                                            <td style="display: none;">{{ data.requestType }}</td>
+                                                            <td style="display: none;">{{ data.startTime }}</td>
+                                                            <td style="display: none;">{{ data.endTime }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+        
+                                            </div>
+                                        </form>
+        
+                                        <div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                                            aria-labelledby="dialog-sizes-name1">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Request No:
+                                                            {{requestIdVal}}</h4>
+                                                        <button type="button" class="close pull-right" (click)="lgModal1.hide()"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="card-body">
+                                                            <form #tutorOpenRequestsForm="ngForm" class="form-horizontal">
+                                                                <div class="row">
+                                                                    <label class="col-md-3 col-form-label"
+                                                                        for="text-input">Subject/Guidance (Choosen Area)</label>
+                                                                    <div class="col-md-4">
+                                                                        {{helpAera}}
+                                                                    </div>
+                                                                    <span class="col-md-3">
+                                                                        <span class="btn btn-sm btn-primary">
+                                                                            View FAQs</span>
+                                                                    </span>
+                                                                </div>
+                                                                <!--/.row-->
+                                                                <br />
+                                                                <div class="row">
+                                                                    <span class="col-md-2 col-form-label"
+                                                                        for="text-input">Tutor
+                                                                        Id</span>
+                                                                    <span class="col-md-4 col-form-label">
+                                                                        {{currentUser.tutorId}}
+                                                                    </span>
+                                                                    <span class="col-md-2 col-form-label" for="text-input">
+                                                                        Name</span>
+                                                                    <Span class="col-md-4  col-form-label">
+                                                                        {{currentUser.firstName}}&nbsp;{{currentUser.lastName}}
+                                                                    </Span>
+                                                                </div>
+                                                                <br />
+                                                                <div class="row">
+                                                                    <span class="col-md-2 col-form-label" for="text-input">
+                                                                        Mobile
+                                                                        No</span>
+                                                                    <span class="col-md-4 col-form-label">
+                                                                        {{currentUser.phone}}
+                                                                    </span>
+                                                                    <span class="col-md-2 col-form-label" for="text-input">
+                                                                        Grade</span>
+                                                                    <!-- <span class="col-md-4 col-form-label">
+                                                                        {{currentUser.gradeMaster.gradeName}}
+                                                                    </span> -->
+                                                                </div>
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group">
+                                                                            <label for="name">What student is looking for
+                                                                            </label>
+                                                                            <span class="form-control col-md-10 col-form-label">
+                                                                                {{requestBodyVal}}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--/.row-->
+                                                                <br /><br />
+                                                                <div class="row">
+                                                                    <div class="form-group col-sm-12">
+                                                                        <span
+                                                                            class="btn btn-secondary btn-lg btn-block">Student's
+                                                                            Available date : {{availableDateVal}} - Time :
+                                                                            {{startTimeVal}} - {{endTimeVal}}
+                                                                        </span>
+                                                                    </div>        
+        
+                                                                    <button type="button"
+                                                                        class="btn btn-brand btn-lg btn-stack-overflow mr-1"
+                                                                        (click)="lgModal1.hide()"
+                                                                        style="margin-bottom: 4px; float: right;">
+                                                                        <i class="fa"></i>
+                                                                        <span>Chat</span>
+                                                                    </button>
+        
+                                                                    <!-- <span class="form-group col-sm-6">
+                                                                        <span
+                                                                            class="btn btn-secondary btn-lg btn-block">Student's
+                                                                            available Time : 
+                                                                        </span>
+                                                                    </span> -->
+        
+                                                                </div>
+                                                                <!--/.row-->
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tab>
+                  
+    
+                </tabset>
+            </div>
         </div>
     </div>
-</div>
